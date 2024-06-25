@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./Canvas.css";
-import Nirjal from "./instagram.svg"
+import Nirjal from "../icons8-instagram.svg"
 import {
   Home as HomeIcon,
   Settings as SettingsIcon,
@@ -53,7 +53,6 @@ import {
   KeyboardArrowDown as KeyboardArrowDownIcon,
   MoreVert as MoreVertIcon,
   MoreHoriz as MoreHorizIcon,
-  Height,
 } from "@mui/icons-material";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -870,36 +869,50 @@ const Canvas: React.FC<CanvasProps> = ({
     }
     const newItems = [...droppedItems];
     const item = newItems[selectedItemIndex];
-
-    if (item.name !== "Navbar" && item.name !== "Footer") {
-      switch (event.key) {
-        case "ArrowUp":
+  
+    switch (event.key) {
+      case "ArrowUp":
+        if (item.name !== "Navbar" && item.name !== "Footer") {
           item.y = Math.max(navbarHeight, item.y - 5);
-          break;
-        case "ArrowDown":
+        }
+        break;
+      case "ArrowDown":
+        if (item.name !== "Navbar" && item.name !== "Footer") {
           item.y = Math.min(canvasHeight - footerHeight, item.y + 5);
-          break;
-        case "ArrowLeft":
+        }
+        break;
+      case "ArrowLeft":
+        if (item.name !== "Navbar" && item.name !== "Footer") {
           item.x = Math.max(0, item.x - 5);
-          break;
-        case "ArrowRight":
-          item.x = Math.min(canvasWidth-20 , item.x + 5);
-          break;
-        default:
-          return;
-      }
-
-      setDroppedItems(newItems);
+        }
+        break;
+      case "ArrowRight":
+        if (item.name !== "Navbar" && item.name !== "Footer") {
+          item.x = Math.min(canvasWidth - 20, item.x + 5);
+        }
+        break;
+        case "Delete":
+        if (item.name === "Navbar") sethasNavbar(false);
+        if (item.name === "Footer") setHasFooter(false);
+        newItems.splice(selectedItemIndex, 1);
+        setSelectedItem(null);
+        setSelectedItemIndex(null);
+        break;
+      default:
+        return;
     }
+  
+    setDroppedItems(newItems);
   };
-
+  
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
-
+  
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [selectedItemIndex, droppedItems]);
+  
 
 
   return (
@@ -911,11 +924,11 @@ const Canvas: React.FC<CanvasProps> = ({
       style={{ width: canvasWidth, height: canvasHeight }}
     >
       <canvas ref={canvasRef}/>
-      {isHovered && (
+      {/* {isHovered && (
         <div className="coordinates">
           x: {coords.x}px, y: {coords.y}px
         </div>
-      )}
+      )} */}
 
       {droppedItems.map((item, index) => {
         const itemstyle: React.CSSProperties = {

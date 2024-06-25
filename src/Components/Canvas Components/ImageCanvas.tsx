@@ -23,6 +23,7 @@ const ImageCanvas: React.FC<ImageProps> = ({
   itemProperties,
   handleChange,
   handleFileChange,
+  handleUrlChange,
 }) => {
   return (
     <div className="image">
@@ -40,6 +41,7 @@ const ImageCanvas: React.FC<ImageProps> = ({
             value={itemProperties.imageUrl}
             onChange={(e) => handleChange("imageUrl", e.target.value)}
           />
+          <button onClick={handleUrlChange}>Set URL</button>
         </label>
       </div>
       <div className="input-group">

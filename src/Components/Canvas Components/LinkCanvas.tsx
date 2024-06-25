@@ -5,8 +5,8 @@ interface LinkProps {
     link_destination: string;
     link_name: string;
     link_decoration: string;
-    link_fontColor: string;
-    fontSize: number;
+    fontColor: string;
+    link_font_size: number;
     border_pixel: number;
     border_style: string;
     border_color: string;
@@ -64,8 +64,8 @@ const LinkCanvas: React.FC<LinkProps> = ({ itemProperties, handleChange }) => {
           Link Color:
           <input
             type="color"
-            value={itemProperties.link_fontColor}
-            onChange={(e) => handleChange("link_fontColor", e.target.value)}
+            value={itemProperties.fontColor || "#000000"}
+            onChange={(e) => handleChange("fontColor ", e.target.value)}
           />
         </label>
       </div>
@@ -74,8 +74,8 @@ const LinkCanvas: React.FC<LinkProps> = ({ itemProperties, handleChange }) => {
           Link Font Size:
           <input
             type="number"
-            value={itemProperties.fontSize || 12}
-            onChange={(e) => handleChange("fontSize", parseInt(e.target.value))}
+            value={itemProperties.link_font_size || 12}
+            onChange={(e) => handleChange("link_font_size", parseInt(e.target.value))}
           />
         </label>
       </div>

@@ -1,0 +1,71 @@
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faLinkedin, faTwitter, faPinterest, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { FooterItem } from './Canvas';  // Adjust the import based on your file structure
+
+interface FooterCanvasProps {
+  item: FooterItem;
+  canvasWidth: number;
+}
+
+const FooterCanvas: React.FC<FooterCanvasProps> = ({ item, canvasWidth }) => {
+  const footerStyle: React.CSSProperties = {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    backgroundColor: item.backgroundColor || '#f0f0f0',
+    padding: '20px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  };
+
+  const logoStyle: React.CSSProperties = {
+    maxWidth: '100px',
+    height: 'auto',
+  };
+
+  const iconStyle: React.CSSProperties = {
+    fontSize: '24px',
+    marginRight: '15px',
+    color: item.iconColor || '#000000',
+  };
+
+  return (
+    <footer style={{ ...footerStyle, width: canvasWidth }}>
+      <div>
+        {item.logoUrl && <img src={item.logoUrl} alt="Logo" style={logoStyle} />}
+      </div>
+      <div>
+        {item.instagramUrl && (
+          <a href={item.instagramUrl} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faInstagram} style={iconStyle} />
+          </a>
+        )}
+        {item.linkedinUrl && (
+          <a href={item.linkedinUrl} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faLinkedin} style={iconStyle} />
+          </a>
+        )}
+        {item.twitterUrl && (
+          <a href={item.twitterUrl} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faTwitter} style={iconStyle} />
+          </a>
+        )}
+        {item.pinterestUrl && (
+          <a href={item.pinterestUrl} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faPinterest} style={iconStyle} />
+          </a>
+        )}
+        {item.whatsappUrl && (
+          <a href={item.whatsappUrl} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={faWhatsapp} style={iconStyle} />
+          </a>
+        )}
+      </div>
+    </footer>
+  );
+};
+
+export default FooterCanvas;

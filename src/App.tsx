@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import './App.css';
-import Canvas from './Components/Canvas';
-import Navbar from './Components/Navbar';
-import Left_sidebar from './Components/Left_sidebar';
-import Right_sidebar from './Components/Right_sidebar';
-import Layers from './Components/Layers';
+import React, { useState } from "react";
+import "./App.css";
+import Canvas from "./Components/Canvas";
+import Navbar from "./Components/Navbar";
+import Left_sidebar from "./Components/Left_sidebar";
+import Right_sidebar from "./Components/Right_sidebar";
+import Layers from "./Components/Canvas Components/Layers";
+import HtmlCodeGenerator from "./Components/HTMLcodeGenerator";
 
 const App: React.FC = () => {
   const [canvasWidth, setCanvasWidth] = useState(800);
@@ -12,6 +13,7 @@ const App: React.FC = () => {
   const [showGrid, setShowGrid] = useState(true);
   const [droppedItems, setDroppedItems] = useState<any[]>([]);
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [showHtmlCode, setShowHtmlCode] = useState(false);
 
   const updateItem = (updatedItem: any) => {
     setDroppedItems((items) =>
@@ -33,18 +35,22 @@ const App: React.FC = () => {
           setDroppedItems={setDroppedItems}
           setSelectedItem={setSelectedItem}
         />
-          <Right_sidebar
-            selectedItem={selectedItem}
-            updateItem={updateItem}
-            canvasWidth={canvasWidth}
-            setCanvasWidth={setCanvasWidth}
-            canvasHeight={canvasHeight}
-            setCanvasHeight={setCanvasHeight}
-            showGrid={showGrid}
-            setShowGrid={setShowGrid}
-          />
+        <Right_sidebar
+          selectedItem={selectedItem}
+          updateItem={updateItem}
+          canvasWidth={canvasWidth}
+          setCanvasWidth={setCanvasWidth}
+          canvasHeight={canvasHeight}
+          setCanvasHeight={setCanvasHeight}
+          showGrid={showGrid}
+          setShowGrid={setShowGrid}
+        />
       </div>
-        {/* <Layers/> */}
+      <Layers droppedItems={droppedItems} />
+      <button onClick={() => setShowHtmlCode(!showHtmlCode)}>
+        {showHtmlCode ? "Hide HTML Code" : "Show HTML Code"}
+      </button>
+      {showHtmlCode && <HtmlCodeGenerator droppedItems={droppedItems} />}
     </>
   );
 };

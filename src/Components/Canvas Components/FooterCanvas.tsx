@@ -78,8 +78,8 @@ const FooterCanvas: React.FC<FooterCanvasProps> = ({
             Footer Background Color:
             <input
               type="color"
-              value={itemProperties.backgroundColor || "#ffffff"}
-              onChange={(e) => handleChange("backgroundColor", e.target.value)}
+              value={itemProperties.footerBgColor || "#ffffff"}
+              onChange={(e) => handleChange("footerBgColor", e.target.value)}
             />
           </label>
         </div>
@@ -88,8 +88,8 @@ const FooterCanvas: React.FC<FooterCanvasProps> = ({
             Footer Text Color:
             <input
               type="color"
-              value={itemProperties.fontColor || "#000000"}
-              onChange={(e) => handleChange("fontColor", e.target.value)}
+              value={itemProperties.footerTextColor || "#000000"}
+              onChange={(e) => handleChange("footerTextColor", e.target.value)}
             />
           </label>
         </div>
