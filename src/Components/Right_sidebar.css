@@ -1,0 +1,22 @@
+
+.main {
+    padding: 20px;
+  }
+  
+  .setting-group {
+    margin-bottom: 20px;
+  }
+  
+  .setting-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .setting-group input[type="number"],
+  .setting-group input[type="text"],
+  .setting-group input[type="color"] {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+    

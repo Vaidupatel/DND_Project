@@ -1,0 +1,29 @@
+.nav_back{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    background-color: black;
+    position: sticky;
+    padding: 10px;
+    align-items: center;
+    z-index: 1500;
+    top: 0;
+}
+.Left, .Right{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+.Left a{
+    text-decoration: none;
+    color: white;
+
+}
+.Right button{
+    background-color: transparent;
+    color: white;
+    padding: 2px 6px;
+}
+.Left a:hover, .Right button:hover{
+    transform: scale(1.1);
+}

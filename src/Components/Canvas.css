@@ -1,0 +1,55 @@
+.canvas_area {
+    width: 80%;
+    height: 85vh;
+    position: relative;
+    top: 1em;
+    left: 1rem;
+    overflow: hidden;
+    box-shadow: 0 1px 5px black;
+
+}
+canvas{
+  position: relative;
+}
+.coordinates {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    font-size: 12px;
+    top: 0;
+    left: 0;
+}
+
+.dropped_item {
+    cursor: move;
+  }
+.dropped_box {
+    width: 100px;
+    height: 100px;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+  }
+  .navbar{
+   display: flex;
+   justify-content: space-between;
+   padding: 10px;
+   position: absolute;
+   width: calc(100% - 20px);
+   top: 0;
+   left: 0;
+  }
+  .navbar-right, .navbar-left{
+    display: flex;
+    align-items: center;
+  }
+  .navbar-link{
+    margin-right: 20px;
+    color: black;
+    text-decoration: none;
+  }
+  .navbar-button{
+    margin-left: 10px;
+  }
